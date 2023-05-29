@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}SignUp{% endblock %}
+
+{% block content %}
+<section class="vh-100" style="background-color: #91c7fc;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="https://images.pexels.com/photos/13290381/pexels-photo-13290381.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%; object-fit: cover;  object-position: left 0px; " />
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+  
+                  <form method="post" class="container">
+  
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      
+                      <span class="h1 fw-bold mb-0" style="color: #302b2b;">NDRF</span>
+                    </div>
+  
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">First step to get into Community</h5>
+  
+                    <div class="form-outline mb-4">
+                      <input type="email" id="email" required name="email" class="form-control form-control-lg" />
+                      <label class="form-label" for="email">Email address</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" id="name" name="name" required  class="form-control form-control-lg" />
+                        <label class="form-label" for="name">Name</label>
+                      </div>
+  
+                    <div class="form-outline mb-4">
+                      <input type="password" id="pass" required name="pass" class="form-control form-control-lg" />
+                      <label class="form-label" for="pass">Password</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="password" id="pass_conf"name="pass_conf" required  class="form-control form-control-lg" />
+                        <label class="form-label" for="pass_conf">Confirm Password</label>
+                      </div>
+  
+                    <div class="pt-1 mb-4">
+                      <button style="background-color: #3b71ca; color: azure;" class="btn btn-lg btn-block" type="submit">Sign Up</button>
+                    </div>
+  
+                    <p class="mb-5 pb-lg-2" style="color: #302b2b;">Already have an account? <a href="{{url_for('auth.login')}}"
+                        style="color: #de556c; text-decoration: underline;">Login</a></p>
+                    
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        base
+      {% endblock %}
+    </title>
+    <meta name="description"  content="Green Thumbs"/>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    
+    <link href="{{url_for('static', filename='vendor/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet">
+
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  </head>
+
+  <body>
+    {% set nav = nav if nav==false else true %}
+    {% if nav %}
+    
+    
+    <nav class="navbar navbar-expand" style="font-family:'Open Sans'; padding: 0.5em 0em;">
+      <h1 style="padding-left:2rem; color: rgb(81, 82, 82); font-weight: 700;" ><span>NDRF</span></h1>
+     
+      <div class="collapse navbar-collapse" id="navbar" style="margin-left: auto; width: fit-content; display:flex;justify-content:flex-end; padding-right:4rem;">
+        <div class="navbar-nav" style="gap:3rem;">
+          {% if user.is_authenticated %}
+              <a class="nav-item nav-link scrollto" id="home" href="/">Home</a>
+              <a class="nav-item nav-link scrollto" id="add_disaster" href="/add">Add Disaster</a>
+              <a class="nav-item nav-link scrollto" id="logout" href="/logout">Logout</a>
+          {% else %}
+              <a class="nav-item nav-link scrollto" id="login" href="/login">Login</a>
+              <a class="nav-item nav-link scrollto" id="signUp" href="/sign-up">Sign Up</a>
+          {% endif %}
+          
+        </div>
+      </div>
+    </nav>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          {% for category, message in messages %}
+              {% if category == 'error' %}
+                <div class="alert alert-danger alert-dismissable fade show text-center" style="position: absolute; left: 0px; right: 0px;" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+              {% else %}
+                <div class="alert alert-success alert-dismissable fade show text-center" style="position: absolute;left: 0px; right: 0px" role="alert">
+                  {{message}}
+                  <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endif %}
+          {% endfor %}
+      {% endif %}
+    {% endwith %}
+    
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+    <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
+  
+    <!-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"
+    ></script>
+    
+    <script type="text/javascript" src="{{url_for('static', filename='vendor/aos/aos.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='vendor/glightbox/js/glightbox.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+    <script  src="{{url_for('static', filename='main.js')}}"></script>
+    <script  src="{{url_for('static', filename='housePlants.js')}}"></script>
+    
+
+  </body>
+</html>

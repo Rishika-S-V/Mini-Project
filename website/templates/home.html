@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+<style>
+  .location-icon{
+    color: #ff628e!important;
+    display: flex !important;
+    align-items: center;
+    justify-items: center;
+    gap: .5rem !important;
+    margin-top: 8px !important;
+  }
+</style>
+
+
+<section id="hero" class="d-flex align-items-center">
+
+  <div class="container d-flex flex-column align-items-center justify-content-center" style="padding-top:0px ;" data-aos="fade-up">
+    <h1>National Disaster Response Force Community</h1>
+    <h2>Empowering Collaboration for Effective Disaster Relief</h2>
+    <a href="{{url_for('views.add_disaster')}}" class="btn-get-started scrollto">Update Disaster</a>
+    <img src="static/Images/hero-img.png" class="img-fluid hero-img" alt="" data-aos="zoom-in" data-aos-delay="150">
+  </div>
+
+</section>
+
+
+<!-- Features -->
+
+<section id="features" class="features" data-aos="fade-up">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Features</h2>
+      
+    </div>
+
+    <div class="row content">
+      <div class="col-md-5" data-aos="fade-right" data-aos-delay="100">
+        <img src="static/Images/features-1.png" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-4" data-aos="fade-left" data-aos-delay="100">
+        <h3>Real-time Updates</h3>
+        <p class="fst-italic">
+        Stay updated with the latest disaster alerts, situational reports, and response efforts initiated by the NDRF, NSS, and NCC. Timely information is crucial for effective response and assisting affected communities.
+        </p>
+      </div>
+    </div>
+
+    <div class="row content">
+      <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+        <img src="static/Images/features-2.png" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+        <h3>Collaboration Hub</h3>
+        <p class="fst-italic">Connect with dedicated individuals and organizations involved in disaster response across the nation. Share insights, resources, and best practices to enhance the collective capacity to handle emergencies effectively.          
+        </p>
+      </div>
+    </div>
+
+    <div class="row content">
+      <div class="col-md-5" data-aos="fade-right">
+        <img src="static/Images/features-3.png" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-5" data-aos="fade-left">
+        <h3>Training and Knowledge Center</h3>
+        <p>Access a comprehensive repository of training materials, guidelines, and case studies to enhance your skills and knowledge in disaster response and relief operations. Learn from experienced professionals and leverage this knowledge to save lives and mitigate the impact of disasters.
+        </p>
+      </div>
+    </div>
+
+    <div class="row content">
+      <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+        <img src="static/Images/features-4.png" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+        <h3>Volunteer Opportunities</h3>
+        <p class="fst-italic">Discover volunteering opportunities with the NDRF, NSS, and NCC, and contribute your time, skills, and resources towards helping those in need. Join hands with like-minded individuals to make a difference in the lives of disaster-affected communities.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Features -->
+
+
+    <!-- ======= Steps Section ======= -->
+    <section id="steps" class="steps">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Recent Updates</h2>
+          
+        </div>
+        <div class="row no-gutters" data-aos="fade-up">
+
+          {% for disaster in disasters %}
+            {%   if disaster.is_resolved == false %}
+
+              <div class="col-lg-4 col-md-6 px-2 px-md-0 content-item" data-aos="fade-up" data-aos-delay="100">
+                <span>{{disaster.title}}</span>
+                <p>{{disaster.description}}</p>
+                <p class="location-icon"><i class="fa-sharp fa-solid fa-location-dot"></i>{{disaster.location}}</p>
+              </div>
+
+            {% endif %}
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Steps Section -->
+
+    <!-- Links -->
+
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Training and Knowledge Center</h2>
+          <p>We strive to create a unified and robust network of volunteers, professionals, and organizations committed to alleviating the suffering caused by calamities. Through this platform, you can stay informed about ongoing disaster situations, connect with fellow responders, and leverage the collective expertise and resources to ensure swift and efficient relief efforts.</p>
+        </div>
+
+
+        <div class="row portfolio-container">
+
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img style="aspect-ratio:16/9; object-fit: cover;" src="https://nss.gov.in/sites/default/files/styles/nss_home_page_slider/public/PM%20House-min.jpg?itok=gXXjloGt" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>NSS Indian Government</h4>
+              <p>The Motto of NSS "Not Me But You", reflects the essence of democratic living and upholds the need for self-less service.</p>
+              <div class="portfolio-links">
+                
+                <a href="https://nss.gov.in/" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app" >
+          <div class="portfolio-wrap">
+            <img style="aspect-ratio:16/9; object-fit: cover;" src="https://www.rotary.org/sites/default/files/styles/w_1200/public/rm-may23-projects-nepal.jpg?itok=jmUCcgF2" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Rotary Club</h4>
+              <p>Solving some of the world’s most complex and pressing problems takes real commitment and vision. Rotary members believe that we share a responsibility to take action to improve our communities.</p>
+              <div class="portfolio-links">
+                
+                <a href="https://www.rotary.org/en" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+       </div>
+       </section> 
+
+       <!-- FAQS -->
+
+       <section id="faq" class="faq">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+          </div>
+  
+          <ul class="faq-list">
+  
+            <li>
+              <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">What is the National Disaster Response Force (NDRF)? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+              <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  The National Disaster Response Force (NDRF) is a specialized force in India that is dedicated to disaster response, rescue operations, and relief efforts during natural or man-made disasters.
+                </p>
+              </div>
+            </li>
+  
+            <li>
+              <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">What is the role of the National Service Scheme (NSS) and National Cadet Corps (NCC) in disaster response? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+              <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  The National Service Scheme (NSS) and National Cadet Corps (NCC) are youth organizations in India that actively participate in disaster response activities. They assist in providing manpower, spreading awareness, and supporting relief operations during times of crisis.
+              </div>
+            </li>
+  
+            <li>
+              <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">How can I stay updated about ongoing disaster situations? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+              <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  The website provides real-time updates on disaster alerts, situational reports, and response efforts initiated by the NDRF, NSS, and NCC. Regularly visit the website.
+                </p>
+              </div>
+            </li>
+  
+            <li>
+              <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">How can I contribute to disaster relief efforts through the website?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+              <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  There are several ways to contribute. You can volunteer your time and skills by joining the NDRF, NSS, or NCC. Additionally, you can donate resources, participate in fundraising campaigns, or provide relevant information and expertise to support relief operations.
+                </p>
+              </div>
+            </li>
+  
+            <li>
+              <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">How can I connect with other responders and organizations? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+              <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  The website provides a collaboration hub where you can connect with like-minded individuals, professionals, and organizations involved in disaster response. Engage in discussions, share insights, and explore collaborative opportunities to enhance collective response efforts.
+                </p>
+              </div>
+            </li>
+  
+  
+          </ul>
+  
+        </div>
+      </section>
+
+      <!-- End of FAQS -->
+
+{% endblock %}
+
+
+
